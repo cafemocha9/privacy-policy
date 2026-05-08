@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>特定商取引法に基づく表示｜Coffee Palette</title>
+<meta name="description" content="Coffee Palette 特定商取引法に基づく表示">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;1,9..144,300&family=Inter:wght@400;500&family=Noto+Sans+JP:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg:              #fafaf8;
+    --bg-elev:         #f3f2ee;
+    --rule:            rgba(20,18,15,0.08);
+    --rule-strong:     rgba(20,18,15,0.18);
+    --ink:             #141210;
+    --ink-soft:        #3a3631;
+    --ink-mute:        #8a837a;
+    --ink-faint:       #b5ada2;
+
+    --serif:  'Fraunces', 'Noto Sans JP', serif;
+    --sans:   'Inter', 'Noto Sans JP', sans-serif;
+
+    --s-1: 8px;
+    --s-2: 16px;
+    --s-3: 24px;
+    --s-4: 32px;
+    --s-5: 48px;
+    --s-6: 64px;
+    --s-7: 96px;
+    --s-8: 128px;
+    --s-9: 160px;
+  }
+
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: var(--sans);
+    background: var(--bg);
+    color: var(--ink);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    font-weight: 400;
+  }
+
+  ::selection { background: var(--ink); color: var(--bg); }
+
+  /* ── Shell ── */
+  .shell {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 var(--s-4);
+  }
+
+  /* ── Nav ── */
+  nav {
+    position: sticky;
+    top: 0;
+    background: rgba(250,250,248,0.85);
+    backdrop-filter: saturate(160%) blur(12px);
+    -webkit-backdrop-filter: saturate(160%) blur(12px);
+    border-bottom: 0.5px solid var(--rule);
+    z-index: 100;
+  }
+  .nav-inner {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-top: var(--s-3);
+    padding-bottom: var(--s-3);
+  }
+  .nav-links {
+    display: flex;
+    gap: var(--s-4);
+    align-items: center;
+  }
+  .nav-back {
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    text-decoration: none;
+    transition: color 0.25s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .nav-back:hover { color: var(--ink); }
+
+  /* ── Hero ── */
+  .hero {
+    padding: var(--s-9) 0 var(--s-8);
+  }
+  .hero-meta {
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    margin-bottom: var(--s-5);
+  }
+  .hero-title {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: clamp(32px, 5vw, 48px);
+    line-height: 1.05;
+    letter-spacing: -0.03em;
+    color: var(--ink);
+    margin-bottom: var(--s-4);
+    font-variation-settings: "opsz" 72;
+  }
+  .hero-title em {
+    font-style: italic;
+    color: var(--ink-mute);
+  }
+  .hero-sub {
+    font-size: 13px;
+    color: var(--ink-mute);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  /* ── Rule ── */
+  .rule {
+    height: 0.5px;
+    background: var(--rule);
+    margin: 0;
+  }
+
+  /* ── Intro ── */
+  .intro-block {
+    padding: var(--s-6) 0;
+    border-bottom: 0.5px solid var(--rule);
+  }
+  .intro-text {
+    font-family: var(--serif);
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 1.6;
+    letter-spacing: -0.01em;
+    color: var(--ink);
+    max-width: 28em;
+  }
+  .intro-text em {
+    font-style: italic;
+    color: var(--ink-mute);
+  }
+
+  /* ── Tokusho table ── */
+  .tokusho-table {
+    margin-top: 0;
+  }
+  .tokusho-row {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: var(--s-4);
+    padding: var(--s-4) 0;
+    border-top: 0.5px solid var(--rule);
+    align-items: baseline;
+  }
+  .tokusho-row:first-child {
+    border-top: 0.5px solid var(--ink);
+  }
+  .tokusho-row:last-child {
+    border-bottom: 0.5px solid var(--rule);
+  }
+  .tokusho-dt {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-mute);
+    padding-top: 2px;
+    line-height: 1.5;
+  }
+  .tokusho-dd {
+    font-size: 14px;
+    color: var(--ink-soft);
+    line-height: 1.85;
+  }
+  .tokusho-dd a {
+    color: var(--ink);
+    transition: color 0.25s ease;
+  }
+  .tokusho-dd a:hover { color: var(--ink-mute); }
+  .tokusho-dd strong { font-weight: 500; color: var(--ink); }
+
+  /* ── Notice box ── */
+  .notice {
+    background: var(--bg-elev);
+    border-left: 0.5px solid var(--rule-strong);
+    padding: var(--s-3) var(--s-4);
+    margin: var(--s-5) 0 0;
+    font-size: 14px;
+    color: var(--ink);
+    line-height: 1.85;
+  }
+  .notice strong {
+    font-weight: 500;
+    color: var(--ink);
+    display: block;
+    margin-bottom: var(--s-1);
+  }
+
+  /* ── Footer ── */
+  footer {
+    border-top: 0.5px solid var(--rule);
+    padding: var(--s-5) 0 var(--s-6);
+  }
+  .foot-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: var(--s-3);
+  }
+  .foot-copy {
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    color: var(--ink-mute);
+  }
+  .foot-meta {
+    font-size: 12px;
+    color: var(--ink-faint);
+  }
+  .foot-link {
+    color: var(--ink-faint);
+    text-decoration: none;
+    transition: color 0.25s ease;
+  }
+  .foot-link:hover { color: var(--ink-mute); }
+
+  /* ── Fade ── */
+  .fade {
+    opacity: 0;
+    transform: translateY(8px);
+    animation: fadeIn 0.9s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  }
+  .fade.d1 { animation-delay: 0.05s; }
+  .fade.d2 { animation-delay: 0.15s; }
+  .fade.d3 { animation-delay: 0.25s; }
+  @keyframes fadeIn { to { opacity: 1; transform: translateY(0); } }
+
+  /* ── Responsive ── */
+  @media (max-width: 640px) {
+    .shell { padding: 0 var(--s-3); }
+    .hero { padding-top: var(--s-7); padding-bottom: var(--s-6); text-align: center; }
+    .hero-title { font-size: 26px; }
+    .tokusho-row {
+      grid-template-columns: 1fr;
+      gap: var(--s-1);
+      padding: var(--s-3) 0;
+    }
+    .tokusho-dt {
+      color: var(--ink-mute);
+    }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="shell nav-inner">
+    <div class="nav-links">
+      <a class="nav-back" href="https://cafemocha9.github.io/">
+        <svg width="14" height="10" viewBox="0 0 14 10" fill="none" stroke="currentColor" stroke-width="1"><path d="M13 5H1M5 1L1 5l4 4"/></svg>
+        Back
+      </a>
+    </div>
+  </div>
+</nav>
+
+<header class="shell hero">
+  <div class="hero-meta fade d1">Coffee Palette</div>
+  <h1 class="hero-title fade d2">特定商取引法に基づく表示</h1>
+</header>
+
+<div class="rule"></div>
+
+<main class="shell">
+
+  <div class="intro-block">
+    <p class="intro-text">
+      本アプリの課金・決済はApple Inc.が代行しております。住所・電話番号は特定商取引法施行規則第8条に基づき、請求があり次第開示いたします。
+    </p>
+  </div>
+
+  <dl class="tokusho-table">
+
+    <div class="tokusho-row">
+      <dt class="tokusho-dt">販売事業者</dt>
+      <dd class="tokusho-dd">【氏名】</dd>
+    </div>
+
+    <div class="tokusho-row">
+      <dt class="tokusho-dt">所在地</dt>
+      <dd class="tokusho-dd">請求があり次第、遅滞なく開示いたします。お問い合わせ先メールアドレスまでご連絡ください。</dd>
+    </div>
+
+    <div class="tokusho-row">
+      <dt class="tokusho-dt">電話番号</dt>
+      <dd class="tokusho-dd">請求があり次第、遅滞なく開示いたします。お問い合わせ先メールアドレスまでご連絡ください。</dd>
+    </div>
+
+    <div class="tokusho-row">
+      <dt class="tokusho-dt">お問い合わせ</dt>
+      <dd class="tokusho-dd">【メールアドレス】</dd>
+    </div>
+
+    <div class="tokusho-row">
+      <dt class="tokusho-dt">販売価格</dt>
+      <dd class="tokusho-dd">Coffee Palette Premium：¥400 / 月（税込）<br>※ App Store に表示される価格が最終価格となります。</dd>
+    </div>
+
+    <div class="tokusho-row">
+      <dt class="tokusho-dt">代金の支払い時期</dt>
+      <dd class="tokusho-dd">サブスクリプション開始時に課金され、以降1ヶ月ごとに自動更新されます。</dd>
+    </div>
+
+    <div class="tokusho-row">
+      <dt class="tokusho-dt">代金の支払い方法</dt>
+      <dd class="tokusho-dd">Apple Inc. が提供する App Store の決済システムを通じてお支払いいただきます。</dd>
+    </div>
+
+    <div class="tokusho-row">
+      <dt class="tokusho-dt">サービスの提供時期</dt>
+      <dd class="tokusho-dd">決済完了後、即時にプレミアム機能をご利用いただけます。</dd>
+    </div>
+
+    <div class="tokusho-row">
+      <dt class="tokusho-dt">返品・キャンセル</dt>
+      <dd class="tokusho-dd">デジタルコンテンツの性質上、購入後の返金は原則お受けできません。解約は App Store のサブスクリプション管理画面からいつでも可能です。解約後は次の更新日以降に機能が停止します。返金のご要望は Apple のサポート（<a href="https://reportaproblem.apple.com" target="_blank" rel="noopener">reportaproblem.apple.com</a>）までお申し出ください。</dd>
+    </div>
+
+    <div class="tokusho-row">
+      <dt class="tokusho-dt">動作環境</dt>
+      <dd class="tokusho-dd">iOS 16.0 以降を搭載した iPhone / iPad</dd>
+    </div>
+
+  </dl>
+
+  <div class="notice">
+    <strong>Apple Inc. による決済代行について</strong>
+    本アプリの課金・決済は Apple Inc. が代行しております。住所・電話番号は特定商取引法施行規則第8条に基づき、請求があり次第開示いたします。
+  </div>
+
+</main>
+
+<footer>
+  <div class="shell foot-inner">
+    <div class="foot-copy">© 2026 cafemocha9</div>
+    <div class="foot-meta">Coffee Palette · <a class="foot-link" href="../">プライバシーポリシー</a> · 特定商取引法</div>
+  </div>
+</footer>
+
+</body>
+</html>

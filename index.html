@@ -242,6 +242,12 @@
     font-size: 12px;
     color: var(--ink-faint);
   }
+  .foot-link {
+    color: var(--ink-faint);
+    text-decoration: none;
+    transition: color 0.25s ease;
+  }
+  .foot-link:hover { color: var(--ink-mute); }
 
   /* ── i18n ── */
   .ja, span.ja { display: inline; }
@@ -412,7 +418,7 @@
 <footer>
   <div class="shell foot-inner">
     <div class="foot-copy">© 2026 cafemocha9</div>
-    <div class="foot-meta">Coffee Palette · <span class="ja">プライバシーポリシー</span><span class="en">Privacy Policy</span></div>
+    <div class="foot-meta">Coffee Palette · <a class="foot-link" href="tokusho/">特定商取引法</a> · <span class="ja">プライバシーポリシー</span><span class="en">Privacy Policy</span></div>
   </div>
 </footer>
 
